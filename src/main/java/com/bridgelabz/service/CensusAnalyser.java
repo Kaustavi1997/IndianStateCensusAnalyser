@@ -12,6 +12,8 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.stream.StreamSupport;
 
+
+
 public class CensusAnalyser {
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
         try {
@@ -21,14 +23,15 @@ public class CensusAnalyser {
             csvToBeanBuilder.withType(IndianCensusCSV.class);
             csvToBeanBuilder.withIgnoreLeadingWhiteSpace(true);
             CsvToBean<IndianCensusCSV> csvToBean = csvToBeanBuilder.build();
-            Iterator<IndianCensusCSV> censusCSVIterator = csvToBean.iterator();;
+            Iterator<IndianCensusCSV> censusCSVIterator = csvToBean.iterator();
+            ;
             Iterable<IndianCensusCSV> csvIterable = () -> censusCSVIterator;
-            int namOfEateries = (int) StreamSupport.stream(csvIterable.spliterator(),false).count();
+            int namOfEateries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
             return namOfEateries;
-        } catch (IOException e) {
+        }  catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
-        }catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.UNABLE_TO_PARSE);
         }
