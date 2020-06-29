@@ -8,9 +8,10 @@ import org.junit.rules.ExpectedException;
 public class StateAnalyserTest {
     private static final String INDIA_STATE_CODE_CSV_PATH = "./src/test/resources/IndiaStateCode.csv";
     private static final String WRONG_STATE_CSV_PATH = "./src/main/resources/IndiaStateCode.csv";
+    private static final String NOT_STATE_CSV_FILE = "./src/test/resources/IndiaStateCode.txt";
 
     @Test
-    public void givenIndianCensusCSVFileReturnsCorrectRecords() {
+    public void givenIndianStateCSVFileReturnsCorrectRecords() {
         try {
             StateAnalyser stateAnalyser = new StateAnalyser();
             int numOfRecords = stateAnalyser.loadIndiaStateData(INDIA_STATE_CODE_CSV_PATH);
@@ -19,12 +20,23 @@ public class StateAnalyserTest {
         }
     }
     @Test
-    public void givenIndiaCensusData_WithWrongFile_ShouldThrowException() {
+    public void givenIndiaStateData_WithWrongFile_ShouldThrowException() {
         try {
             StateAnalyser stateAnalyser = new StateAnalyser();
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(CensusAnalyserException.class);
             stateAnalyser.loadIndiaStateData(WRONG_STATE_CSV_PATH);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
+        }
+    }
+    @Test
+    public void givenIndiaStateData_WithWrongFileExtension_ShouldThrowException() {
+        try {
+            StateAnalyser stateAnalyser = new StateAnalyser();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            stateAnalyser.loadIndiaStateData(NOT_STATE_CSV_FILE);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
         }
