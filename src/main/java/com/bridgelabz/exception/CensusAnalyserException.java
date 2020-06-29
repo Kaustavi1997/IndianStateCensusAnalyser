@@ -5,7 +5,7 @@ import com.opencsv.exceptions.CsvException;
 public class CensusAnalyserException extends Exception {
 
     public enum ExceptionType {
-        CENSUS_FILE_PROBLEM,UNABLE_TO_PARSE,FILE_NOT_FOUND,DELIMITER_ISSUE
+        CENSUS_FILE_PROBLEM,UNABLE_TO_PARSE,FILE_NOT_FOUND,DELIMITER_HEADER_ISSUE
     }
 
     public ExceptionType type;
