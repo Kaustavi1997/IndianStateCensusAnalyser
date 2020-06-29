@@ -1,10 +1,9 @@
 package com.bridgelabz.service;
 
-import com.bridgelabz.model.IndianCensusCSV;
+import com.bridgelabz.model.IndianStateCSV;
 import com.bridgelabz.exception.CensusAnalyserException;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
@@ -13,17 +12,17 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.stream.StreamSupport;
 
-public class CensusAnalyser {
-    public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
+public class StateAnalyser {
+    public int loadIndiaStateData(String csvFilePath) throws CensusAnalyserException {
         try {
 
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
-            CsvToBeanBuilder<IndianCensusCSV> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
-            csvToBeanBuilder.withType(IndianCensusCSV.class);
+            CsvToBeanBuilder<IndianStateCSV> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
+            csvToBeanBuilder.withType(IndianStateCSV.class);
             csvToBeanBuilder.withIgnoreLeadingWhiteSpace(true);
-            CsvToBean<IndianCensusCSV> csvToBean = csvToBeanBuilder.build();
-            Iterator<IndianCensusCSV> censusCSVIterator = csvToBean.iterator();
-            Iterable<IndianCensusCSV> csvIterable = () -> censusCSVIterator;
+            CsvToBean<IndianStateCSV> csvToBean = csvToBeanBuilder.build();
+            Iterator<IndianStateCSV> censusCSVIterator = csvToBean.iterator();
+            Iterable<IndianStateCSV> csvIterable = () -> censusCSVIterator;
             int namOfEateries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
             return namOfEateries;
         } catch (FileNotFoundException e) {
