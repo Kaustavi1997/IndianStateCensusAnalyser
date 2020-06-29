@@ -12,6 +12,8 @@ public class CensusAnalyserTest {
     private static final String NOT_CSV_FILE = "./src/test/resources/IndiaStateCensusData.txt";
     private static final String DELIMITER_INCORRECT = "./src/test/resources/DelimiterIncorrect.csv";
     private static final String HEADER_INCORRECT = "./src/test/resources/WrongHeader.csv";
+
+
     @Test
     public void givenIndianCensusCSVFileReturnsCorrectRecords() {
         try {
@@ -65,5 +67,6 @@ public class CensusAnalyserTest {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.DELIMITER_HEADER_ISSUE,e.type);
         }
     }
+
 
 }
