@@ -28,6 +28,8 @@ public class CensusAndStateAnalyser {
         } catch (RuntimeException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.DELIMITER_HEADER_ISSUE);
+        } catch (CSVBuilderException e) {
+            throw new CensusAnalyserException(e.getMessage(), e.type.name());
         }
     }
     public int loadIndiaStateData(String csvFilePath) throws CensusAnalyserException {
@@ -44,6 +46,8 @@ public class CensusAndStateAnalyser {
         }catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
+        } catch (CSVBuilderException e) {
+            throw new CensusAnalyserException(e.getMessage(), e.type.name());
         }
     }
     private <E> int getCount(Iterator<E> iterator){
