@@ -5,7 +5,8 @@ import com.bridgelabz.service.CensusAndStateAnalyser;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CensusAndStateAnalyserTest {
+public class CensusAndStateAnalyserTest
+{
     private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndiaStateCensusData.csv";
     private static final String WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.csv";
     private static final String NOT_CSV_FILE = "./src/test/resources/IndiaStateCensusData.txt";
