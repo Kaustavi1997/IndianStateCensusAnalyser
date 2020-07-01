@@ -1,5 +1,4 @@
 package com.bridgelabz.service;
-
 import com.bridgelabz.model.IndianCensusCSV;
 import com.bridgelabz.exception.CensusAnalyserException;
 import com.bridgelabz.model.IndianStateCSV;
@@ -73,26 +72,29 @@ public class CensusAndStateAnalyser {
         String sortedStateCodeCensusJson = new Gson().toJson(stateCSVList);
         return sortedStateCodeCensusJson;
     }
-    public String getSortedCensusData(String stateOrPopulation) throws CensusAnalyserException {
+    public String getSortedCensusData(int choice) throws CensusAnalyserException {
         if (censusCSVList == null || censusCSVList.size() == 0){
             throw new CensusAnalyserException("No Census Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
         }
-        if (stateOrPopulation == "state"){
-            Comparator<IndianCensusCSV> censusComparatorForstate = Comparator.comparing(census -> census.state);
-            this.sortGeneric(censusComparatorForstate,censusCSVList,"asc");
-        }
-        else if (stateOrPopulation == "population"){
-            Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.population);
-            this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
-        }
-        else if (stateOrPopulation == "densityPerSqKm")
-        {
-            Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.densityPerSqKm);
-            this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
-        }
-        else{
-            Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.areaInSqKm);
-            this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
+        switch(choice){
+            case 1:
+                Comparator<IndianCensusCSV> censusComparatorForState = Comparator.comparing(census -> census.state);
+                this.sortGeneric(censusComparatorForState,censusCSVList,"asc");
+                break;
+            case 2:
+                Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.population);
+                this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
+                break;
+            case 3:
+                Comparator<IndianCensusCSV> censusComparatorForDensity = Comparator.comparing(census -> census.densityPerSqKm);
+                this.sortGeneric(censusComparatorForDensity,censusCSVList,"dsc");
+                break;
+            case 4:
+                Comparator<IndianCensusCSV> censusComparatorForArea = Comparator.comparing(census -> census.areaInSqKm);
+                this.sortGeneric(censusComparatorForArea,censusCSVList,"dsc");
+                break;
+            default:
+                System.out.println("invalid");
         }
         String sortedStateCensusJson = new Gson().toJson(censusCSVList);
         return sortedStateCensusJson;
