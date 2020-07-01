@@ -85,8 +85,13 @@ public class CensusAndStateAnalyser {
             Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.population);
             this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
         }
-        else{
+        else if (stateOrPopulation == "densityPerSqKm")
+        {
             Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.densityPerSqKm);
+            this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
+        }
+        else{
+            Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.areaInSqKm);
             this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
         }
         String sortedStateCensusJson = new Gson().toJson(censusCSVList);
