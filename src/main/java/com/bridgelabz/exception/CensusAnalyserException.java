@@ -3,7 +3,7 @@ package com.bridgelabz.exception;
 public class CensusAnalyserException extends Exception {
 
     public enum ExceptionType {
-        CENSUS_FILE_PROBLEM,UNABLE_TO_PARSE,DELIMITER_HEADER_ISSUE
+        CENSUS_FILE_PROBLEM,UNABLE_TO_PARSE,DELIMITER_HEADER_ISSUE,NO_CENSUS_DATA
     }
     public ExceptionType type;
     public CensusAnalyserException(String message, ExceptionType type) {
