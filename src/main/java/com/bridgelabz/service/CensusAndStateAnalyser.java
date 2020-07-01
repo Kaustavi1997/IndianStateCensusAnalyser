@@ -69,30 +69,51 @@ public class CensusAndStateAnalyser {
             throw new CensusAnalyserException("No State Code Data",CensusAnalyserException.ExceptionType.NO_STATE_CODE_DATA);
         }
         Comparator<IndianStateCSV> stateCodeComparator = Comparator.comparing(census -> census.stateCode);
-        this.sortGeneric(stateCodeComparator,stateCSVList);
+        this.sortGeneric(stateCodeComparator,stateCSVList,"asc");
         String sortedStateCodeCensusJson = new Gson().toJson(stateCSVList);
         return sortedStateCodeCensusJson;
     }
-    public String getStateWiseSortedCensusData() throws CensusAnalyserException {
+    public String getSortedCensusData(String stateOrPopulation) throws CensusAnalyserException {
         if (censusCSVList == null || censusCSVList.size() == 0){
             throw new CensusAnalyserException("No Census Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
         }
-        Comparator<IndianCensusCSV> censusComparator = Comparator.comparing(census -> census.state);
-        this.sortGeneric(censusComparator,censusCSVList);
+        if (stateOrPopulation == "state"){
+            Comparator<IndianCensusCSV> censusComparatorForstate = Comparator.comparing(census -> census.state);
+            this.sortGeneric(censusComparatorForstate,censusCSVList,"asc");
+        }else{
+            Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.population);
+            this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
+        }
         String sortedStateCensusJson = new Gson().toJson(censusCSVList);
         return sortedStateCensusJson;
     }
-    private <T> void sortGeneric(Comparator<T> censusComparator,List<T> list) {
-        for(int i=0; i<list.size()-1; i++){
-            for(int j=0; j<list.size()-i-1; j++){
-                T census1 = (T) list.get(i);
+
+    private <T> void sortGeneric(Comparator<T> censusComparator, List<T> list, String order) {
+        for(int i=0; i<list.size(); i++){
+            for(int j=0; j<list.size()-1; j++){
+                T census1 = (T) list.get(j);
                 T census2 = (T) list.get(j+1);
-                if(censusComparator.compare(census1,census2)>0){
-                    list.set(i,census2);
-                    list.set(j+1,census1);
+                if (order.compareTo("asc") == 0) {
+                    if (censusComparator.compare(census1, census2) > 0) {
+                        list.set(j, census2);
+                        list.set(j + 1, census1);
+                    }
+                }
+                else{
+                    if (censusComparator.compare(census1, census2) < 0) {
+                        list.set(j, census2);
+                        list.set(j + 1, census1);
+                    }
                 }
             }
         }
     }
+
+//    public static void main(String[] args) throws CensusAnalyserException {
+//        CensusAndStateAnalyser censusAndStateAnalyser = new CensusAndStateAnalyser();
+//        censusAndStateAnalyser.loadIndiaCensusData("./src/test/resources/IndiaStateCensusData.csv");
+//        System.out.println(censusAndStateAnalyser.getStateWiseSortedCensusDataPopulation());
+//
+//    }
 
 }
