@@ -4,8 +4,13 @@ import com.bridgelabz.model.IndianCensusCSV;
 import com.bridgelabz.model.IndianStateCSV;
 import com.bridgelabz.service.CensusAndStateAnalyser;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 
 public class CensusAndStateAnalyserTest {
     private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndiaStateCensusData.csv";
@@ -205,6 +210,21 @@ public class CensusAndStateAnalyserTest {
             String sortedCensusData = censusAndStateAnalyser.getSortedCensusData("densityPerSqKm");
             System.out.println(sortedCensusData);
         } catch (CensusAnalyserException e) {
+        }
+    }
+    @Test
+    public void givenIndiaCensusData_AfterSortSaveInJsonFile() {
+        try {
+            CensusAndStateAnalyser censusAndStateAnalyser = new CensusAndStateAnalyser();
+            censusAndStateAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            String sortedCensusData = censusAndStateAnalyser.getSortedCensusData("areaInSqKm");
+            String f = "./src/test/resources/censusSortedByArea.json";
+            Writer writer = new FileWriter(f);
+            Gson gson = new GsonBuilder().create();
+            gson.toJson(sortedCensusData,writer);
+            writer.flush();
+            writer.close();
+        } catch (CensusAnalyserException | IOException e) {
         }
     }
 
