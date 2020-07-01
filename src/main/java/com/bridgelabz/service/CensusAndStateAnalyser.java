@@ -82,8 +82,6 @@ public class CensusAndStateAnalyser {
         String sortedStateCensusJson = new Gson().toJson(censusCSVList);
         return sortedStateCensusJson;
     }
-
-
     private <T> void sortGeneric(Comparator<T> censusComparator,List<T> list) {
         for(int i=0; i<list.size()-1; i++){
             for(int j=0; j<list.size()-i-1; j++){
