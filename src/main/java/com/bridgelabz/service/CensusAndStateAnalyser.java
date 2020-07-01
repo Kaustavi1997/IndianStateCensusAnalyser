@@ -80,8 +80,13 @@ public class CensusAndStateAnalyser {
         if (stateOrPopulation == "state"){
             Comparator<IndianCensusCSV> censusComparatorForstate = Comparator.comparing(census -> census.state);
             this.sortGeneric(censusComparatorForstate,censusCSVList,"asc");
-        }else{
+        }
+        else if (stateOrPopulation == "population"){
             Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.population);
+            this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
+        }
+        else{
+            Comparator<IndianCensusCSV> censusComparatorForPopulation = Comparator.comparing(census -> census.densityPerSqKm);
             this.sortGeneric(censusComparatorForPopulation,censusCSVList,"dsc");
         }
         String sortedStateCensusJson = new Gson().toJson(censusCSVList);
@@ -108,12 +113,4 @@ public class CensusAndStateAnalyser {
             }
         }
     }
-
-//    public static void main(String[] args) throws CensusAnalyserException {
-//        CensusAndStateAnalyser censusAndStateAnalyser = new CensusAndStateAnalyser();
-//        censusAndStateAnalyser.loadIndiaCensusData("./src/test/resources/IndiaStateCensusData.csv");
-//        System.out.println(censusAndStateAnalyser.getStateWiseSortedCensusDataPopulation());
-//
-//    }
-
 }
