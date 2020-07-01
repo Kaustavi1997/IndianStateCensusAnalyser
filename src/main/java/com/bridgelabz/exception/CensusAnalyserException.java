@@ -1,7 +1,5 @@
 package com.bridgelabz.exception;
 
-import com.opencsv.exceptions.CsvException;
-
 public class CensusAnalyserException extends Exception {
 
     public enum ExceptionType {
