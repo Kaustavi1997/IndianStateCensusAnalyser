@@ -175,7 +175,7 @@ public class CensusAndStateAnalyserTest {
         }
     }
     @Test
-    public void givenIndiaStateCodeData_WhenSortedOnPopulation_ShouldReturnSortedValue() {
+    public void givenIndiaCensusData_WhenSortedOnPopulation_ShouldReturnSortedValue() {
         try {
             CensusAndStateAnalyser censusAndStateAnalyser = new CensusAndStateAnalyser();
             censusAndStateAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
@@ -186,7 +186,7 @@ public class CensusAndStateAnalyserTest {
         }
     }
     @Test
-    public void givenIndiaStateCodeData_WrongFilePathPopulation_ShouldThrowException() {
+    public void givenIndiaCensusData_WrongFilePathPopulation_ShouldThrowException() {
         try {
             CensusAndStateAnalyser censusAndStateAnalyser = new CensusAndStateAnalyser();
             censusAndStateAnalyser.loadIndiaCensusData(WRONG_CSV_FILE_PATH);
@@ -195,6 +195,16 @@ public class CensusAndStateAnalyserTest {
             Assert.assertEquals(199812341, censusCSV[0].population);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+        }
+    }
+    @Test
+    public void givenIndiaCensusData_ReturnSortedDataBasedOnDensity() {
+        try {
+            CensusAndStateAnalyser censusAndStateAnalyser = new CensusAndStateAnalyser();
+            censusAndStateAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            String sortedCensusData = censusAndStateAnalyser.getSortedCensusData("densityPerSqKm");
+            System.out.println(sortedCensusData);
+        } catch (CensusAnalyserException e) {
         }
     }
 
