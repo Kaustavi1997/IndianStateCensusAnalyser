@@ -161,5 +161,21 @@ public class CensusAndStateAnalyser {
         String sortedUsCensusJson = new Gson().toJson(usCensusList);
         return sortedUsCensusJson;
     }
+    public String mostPopularStateInIndiaAndUs() throws CensusAnalyserException {
+        throwDataException(censusCSVList);
+        throwDataException(usCensusList);
+        usCensusList.sort(((usCensusData1, usCensusData2)
+                -> usCensusData2.populationDensity.compareTo(usCensusData1.populationDensity)));
+        String usMostDensityState = usCensusList.get(0).state;
+        Double usMostDensity = usCensusList.get(0).populationDensity;
+        censusCSVList.sort(((stateData1, stateData2)
+                -> stateData2.densityPerSqKm-stateData1.densityPerSqKm));
+        String indiaMostDensityState = censusCSVList.get(0).state;
+        Double indiaMostDensity = (double) censusCSVList.get(0).densityPerSqKm;
+        if(usMostDensity > indiaMostDensity)
+            return usMostDensityState;
+        else
+            return indiaMostDensityState;
+    }
 }
 
