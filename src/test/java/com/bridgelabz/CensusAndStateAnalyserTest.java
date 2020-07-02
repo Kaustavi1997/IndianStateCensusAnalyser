@@ -9,7 +9,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -146,7 +145,6 @@ public class CensusAndStateAnalyserTest {
             IndianStateCSV[] stateCSV = new Gson().fromJson(sortedStateData, IndianStateCSV[].class);
             Assert.assertEquals("AD", stateCSV[0].stateCode);
             Assert.assertEquals("WB", stateCSV[stateCSV.length-1].stateCode);
-            System.out.println(sortedStateData);
         } catch (CensusAnalyserException e) {
         }
     }
