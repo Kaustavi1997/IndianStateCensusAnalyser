@@ -2,11 +2,11 @@ package com.bridgelabz.service;
 import com.bridgelabz.model.IndianCensusCSV;
 import com.bridgelabz.exception.CensusAnalyserException;
 import com.bridgelabz.model.IndianStateCSV;
+import com.bridgelabz.model.usCensusCSV;
 import com.google.gson.Gson;
 import csvbuilder.ICSVBuilder;
 import csvbuilder.CSVBuilderFactory;
 import csvbuilder.CSVBuilderException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -19,6 +19,7 @@ import java.util.stream.StreamSupport;
 public class CensusAndStateAnalyser {
     List<IndianCensusCSV> censusCSVList = null;
     List<IndianStateCSV> stateCSVList = null;
+    List<usCensusCSV> usCensusList = null;
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
@@ -42,6 +43,22 @@ public class CensusAndStateAnalyser {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             stateCSVList = csvBuilder.getCSVFileList(reader, IndianStateCSV.class);
             return stateCSVList.size();
+        } catch (RuntimeException e) {
+            throw new CensusAnalyserException("Incorrect Header and Delimeter",
+                    CensusAnalyserException.ExceptionType.DELIMITER_HEADER_ISSUE);
+        } catch (IOException e) {
+            throw new CensusAnalyserException("Wrong File Path or Wrong Extension",
+                    CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
+        } catch (CSVBuilderException e) {
+            throw new CensusAnalyserException(e.getMessage(), e.type.name());
+        }
+    }
+    public int loadUSCensusData(String csvFilePath) throws CensusAnalyserException {
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
+            ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
+            usCensusList = csvBuilder.getCSVFileList(reader, usCensusCSV.class);
+            return usCensusList.size();
         } catch (RuntimeException e) {
             throw new CensusAnalyserException("Incorrect Header and Delimeter",
                     CensusAnalyserException.ExceptionType.DELIMITER_HEADER_ISSUE);
