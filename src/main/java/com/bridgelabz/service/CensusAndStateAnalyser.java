@@ -25,14 +25,11 @@ public class CensusAndStateAnalyser {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             censusCSVList = csvBuilder.getCSVFileList(reader,IndianCensusCSV.class);
             return censusCSVList.size();
-        } catch (FileNotFoundException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
-        }catch (IOException e) {
-            throw new CensusAnalyserException(e.getMessage(),
+        } catch (IOException e) {
+            throw new CensusAnalyserException("Wrong File Path or Wrong Extension",
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         } catch (RuntimeException e) {
-            throw new CensusAnalyserException(e.getMessage(),
+            throw new CensusAnalyserException("Incorrect Header and Delimeter",
                     CensusAnalyserException.ExceptionType.DELIMITER_HEADER_ISSUE);
         } catch (CSVBuilderException e) {
             throw new CensusAnalyserException(e.getMessage(), e.type.name());
@@ -44,14 +41,11 @@ public class CensusAndStateAnalyser {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             stateCSVList = csvBuilder.getCSVFileList(reader,IndianStateCSV.class);
             return stateCSVList.size();
-        } catch (FileNotFoundException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         }catch (RuntimeException e) {
-            throw new CensusAnalyserException(e.getMessage(),
+            throw new CensusAnalyserException("Incorrect Header and Delimeter",
                     CensusAnalyserException.ExceptionType.DELIMITER_HEADER_ISSUE);
         }catch (IOException e) {
-            throw new CensusAnalyserException(e.getMessage(),
+            throw new CensusAnalyserException("Wrong File Path or Wrong Extension",
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         } catch (CSVBuilderException e) {
             throw new CensusAnalyserException(e.getMessage(), e.type.name());
