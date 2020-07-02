@@ -14,6 +14,14 @@ public class IndianStateCSV {
     @CsvBindByName(column = "StateCode", required = true)
     public String stateCode;
 
+    public IndianStateCSV(IndianCensusDAO indianCensusDAO){
+        srNo = indianCensusDAO.srNo;
+        stateName = indianCensusDAO.stateName;
+        TIN = indianCensusDAO.TIN;
+        stateCode = indianCensusDAO.stateCode;
+
+    }
+
     @Override
     public String toString() {
         return "IndianStateCSV{" +
