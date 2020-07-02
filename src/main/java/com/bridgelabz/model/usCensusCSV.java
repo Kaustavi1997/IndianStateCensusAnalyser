@@ -25,17 +25,17 @@ public class usCensusCSV {
     public Double landArea;
 
     @CsvBindByName(column = "Population Density", required = true)
-    public float populationDensity;
+    public Double populationDensity;
 
     @CsvBindByName(column = "Housing Density", required = true)
-    public float housingDensity;
+    public Double housingDensity;
 
     @Override
     public String toString() {
         return "usCensusCSV{" +
                 "State Id='" + stateId + '\'' +
-                ", Population='" + population + '\'' +
                 ", State ='" + state + '\'' +
+                ", Population='" + population + '\'' +
                 ", Housing units='" + housingUnits + '\'' +
                 ", Total area='" + totalArea + '\'' +
                 ", Water area='" + waterArea + '\'' +

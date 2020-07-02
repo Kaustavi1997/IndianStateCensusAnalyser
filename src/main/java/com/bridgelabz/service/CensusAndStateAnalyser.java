@@ -119,5 +119,47 @@ public class CensusAndStateAnalyser {
         String sortedUsCensusJson = new Gson().toJson(usCensusList);
         return sortedUsCensusJson;
     }
+    public String getStateWiseSortedUsCensusData() throws CensusAnalyserException {
+        throwDataException(usCensusList);
+        usCensusList.sort(((usCensusData1, usCensusData2)
+                -> usCensusData2.state.compareTo(usCensusData1.state)));
+        String sortedUsCensusJson = new Gson().toJson(usCensusList);
+        return sortedUsCensusJson;
+    }
+    public String getPopulationDensityWiseSortedUsCensusData() throws CensusAnalyserException {
+        throwDataException(usCensusList);
+        usCensusList.sort(((usCensusData1, usCensusData2)
+                -> usCensusData2.populationDensity.compareTo(usCensusData1.populationDensity)));
+        String sortedUsCensusJson = new Gson().toJson(usCensusList);
+        return sortedUsCensusJson;
+    }
+    public String getHousingDensityWiseSortedUsCensusData() throws CensusAnalyserException {
+        throwDataException(usCensusList);
+        usCensusList.sort(((usCensusData1, usCensusData2)
+                -> usCensusData2.housingDensity.compareTo(usCensusData1.housingDensity)));
+        String sortedUsCensusJson = new Gson().toJson(usCensusList);
+        return sortedUsCensusJson;
+    }
+    public String getHousingTotalAreaSortedUsCensusData() throws CensusAnalyserException {
+        throwDataException(usCensusList);
+        usCensusList.sort(((usCensusData1, usCensusData2)
+                -> usCensusData2.totalArea.compareTo(usCensusData1.totalArea)));
+        String sortedUsCensusJson = new Gson().toJson(usCensusList);
+        return sortedUsCensusJson;
+    }
+    public String getHousingWaterAreaSortedUsCensusData() throws CensusAnalyserException {
+        throwDataException(usCensusList);
+        usCensusList.sort(((usCensusData1, usCensusData2)
+                -> usCensusData2.waterArea.compareTo(usCensusData1.waterArea)));
+        String sortedUsCensusJson = new Gson().toJson(usCensusList);
+        return sortedUsCensusJson;
+    }
+    public String getHousingLandAreaSortedUsCensusData() throws CensusAnalyserException {
+        throwDataException(usCensusList);
+        usCensusList.sort(((usCensusData1, usCensusData2)
+                -> usCensusData2.landArea.compareTo(usCensusData1.landArea)));
+        String sortedUsCensusJson = new Gson().toJson(usCensusList);
+        return sortedUsCensusJson;
+    }
 }
 
