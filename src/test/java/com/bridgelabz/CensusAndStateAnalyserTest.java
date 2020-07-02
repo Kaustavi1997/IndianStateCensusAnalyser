@@ -385,6 +385,16 @@ public class CensusAndStateAnalyserTest {
         } catch (CensusAnalyserException e) {
         }
     }
+    @Test
+    public void mostPopulousState() {
+        try {
+            CensusAndStateAnalyser censusAndStateAnalyser = new CensusAndStateAnalyser();
+            censusAndStateAnalyser.loadUSCensusData(US_CENSUS_CSV_PATH);
+            censusAndStateAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            System.out.println(censusAndStateAnalyser.mostPopularStateInIndiaAndUs());
+        } catch (CensusAnalyserException e) {
+        }
+    }
 
 }
 
