@@ -59,10 +59,7 @@ public class CensusAndStateAnalyser {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             usCensusList = csvBuilder.getCSVFileList(reader, usCensusCSV.class);
             return usCensusList.size();
-        } catch (RuntimeException e) {
-            throw new CensusAnalyserException("Incorrect Header and Delimeter",
-                    CensusAnalyserException.ExceptionType.DELIMITER_HEADER_ISSUE);
-        } catch (IOException e) {
+        }catch (IOException e) {
             throw new CensusAnalyserException("Wrong File Path or Wrong Extension",
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         } catch (CSVBuilderException e) {
@@ -111,9 +108,16 @@ public class CensusAndStateAnalyser {
     public String getStateWiseSortedCensusDataAsPerArea() throws CensusAnalyserException {
         throwDataException(censusCSVList);
         censusCSVList.sort(((stateData1, stateData2)
-                -> stateData2.areaInSqKm-stateData1.areaInSqKm));
+                -> stateData2.areaInSqKm - stateData1.areaInSqKm));
         String sortedCensusJson = new Gson().toJson(censusCSVList);
         return sortedCensusJson;
+    }
+    public String getPopulationWiseSortedUsCensusData() throws CensusAnalyserException {
+        throwDataException(usCensusList);
+        usCensusList.sort(((usCensusData1, usCensusData2)
+                -> usCensusData2.population - usCensusData1.population));
+        String sortedUsCensusJson = new Gson().toJson(usCensusList);
+        return sortedUsCensusJson;
     }
 }
 
