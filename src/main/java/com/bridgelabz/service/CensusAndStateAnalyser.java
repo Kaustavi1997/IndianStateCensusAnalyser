@@ -18,10 +18,12 @@ import java.util.stream.StreamSupport;
 
 public class CensusAndStateAnalyser {
     List<CensusDAO> usCensusList = null;
-    Map<String, CensusDAO> censusMap = new HashMap<String, CensusDAO> ();
-    Map<String, CensusDAO> stateMap = new HashMap<String, CensusDAO> ();
+    Map<String, CensusDAO> censusMap = null;
+    Map<String, CensusDAO> stateMap = null;
     public CensusAndStateAnalyser(){
         this.usCensusList = new ArrayList<CensusDAO>();
+        this.censusMap = new HashMap<String, CensusDAO> ();
+        this.stateMap = new HashMap<String, CensusDAO> ();
     }
 
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
@@ -214,12 +216,5 @@ public class CensusAndStateAnalyser {
             return usMostDensityState;
         else
             return indiaMostDensityState;
-    }
-
-    public static void main(String[] args) throws CensusAnalyserException {
-        CensusAndStateAnalyser censusAndStateAnalyser = new CensusAndStateAnalyser();
-        censusAndStateAnalyser.loadIndiaCensusData("./src/test/resources/IndiaStateCensusData.csv");
-        System.out.println(censusAndStateAnalyser.loadIndiaStateData("./src/test/resources/IndiaStateCode.csv"));
-        System.out.println(censusAndStateAnalyser.censusMap);
     }
 }
