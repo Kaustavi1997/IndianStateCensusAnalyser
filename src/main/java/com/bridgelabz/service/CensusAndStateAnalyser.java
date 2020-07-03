@@ -19,18 +19,19 @@ import java.util.stream.StreamSupport;
 public class CensusAndStateAnalyser {
     List<CensusDAO> usCensusList = null;
     Map<String, CensusDAO> censusMap = new HashMap<String, CensusDAO> ();
+    Map<String, CensusDAO> stateMap = new HashMap<String, CensusDAO> ();
     public CensusAndStateAnalyser(){
         this.usCensusList = new ArrayList<CensusDAO>();
     }
+
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<IndianCensusCSV> csvFileIterator = csvBuilder.getCSVFileIterator(reader, IndianCensusCSV.class);
-            while(csvFileIterator.hasNext()){
-                CensusDAO censusDAO = new CensusDAO(csvFileIterator.next());
-                censusMap.put(censusDAO.state, censusDAO);
-            }
+            Iterable<IndianCensusCSV> CSVIterable = () -> csvFileIterator;
+            StreamSupport.stream(CSVIterable.spliterator(),false)
+                    .forEach(censusDAO -> censusMap.put(censusDAO.state, new CensusDAO(censusDAO)));
             return this.censusMap.size();
         } catch (IOException e) {
             throw new CensusAnalyserException("Wrong File Path or Wrong Extension",
@@ -47,21 +48,13 @@ public class CensusAndStateAnalyser {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<IndianStateCSV> csvFileIterator = csvBuilder.getCSVFileIterator(reader, IndianStateCSV.class);
-            while(csvFileIterator.hasNext()){
-                CensusDAO censusDAOStateData = new CensusDAO(csvFileIterator.next());
-                CensusDAO censusDAOCensusData;
-                if(censusMap.containsKey(censusDAOStateData.stateName)){
-                    censusDAOCensusData = censusMap.get(censusDAOStateData.stateName);
-                    censusDAOCensusData.TIN = censusDAOStateData.TIN;
-                    censusDAOCensusData.srNo = censusDAOStateData.srNo;
-                    censusDAOCensusData.stateCode = censusDAOStateData.stateCode;
-                    censusMap.put(censusDAOCensusData.state, censusDAOCensusData);
-                }
-                else {
-                    censusMap.put(censusDAOStateData.stateName, censusDAOStateData);
-                }
-            }
-            return this.censusMap.size();
+            Iterable<IndianStateCSV> CSVIterable = () -> csvFileIterator;
+            StreamSupport.stream(CSVIterable.spliterator(),false)
+                    .forEach(censusDAOStateData -> stateMap.put(censusDAOStateData.stateName, new CensusDAO(censusDAOStateData)));
+            StreamSupport.stream(CSVIterable.spliterator(),false)
+                    .filter(censusDAOStateData -> censusMap.get(censusDAOStateData.stateName) != null)
+                    .forEach(censusDAOStateData -> censusMap.get(censusDAOStateData.stateName).stateCode = censusDAOStateData.stateCode);
+            return this.stateMap.size();
         } catch (RuntimeException e) {
             throw new CensusAnalyserException("Incorrect Header and Delimeter",
                     CensusAnalyserException.ExceptionType.DELIMITER_HEADER_ISSUE);
@@ -100,7 +93,7 @@ public class CensusAndStateAnalyser {
         }
     }
     public String getStateCodeWiseSortedStateCodeData() throws CensusAnalyserException {
-        List<Map.Entry<String, CensusDAO>> sorted = censusMap.entrySet()
+        List<Map.Entry<String, CensusDAO>> sorted = stateMap.entrySet()
             .stream()
             .sorted((e1, e2) -> e1.getValue().stateCode.compareTo(e2.getValue().stateCode)).collect(Collectors.toList());
         List<CensusDAO> sortedByStateCodeDao = new ArrayList<>();
@@ -221,5 +214,12 @@ public class CensusAndStateAnalyser {
             return usMostDensityState;
         else
             return indiaMostDensityState;
+    }
+
+    public static void main(String[] args) throws CensusAnalyserException {
+        CensusAndStateAnalyser censusAndStateAnalyser = new CensusAndStateAnalyser();
+        censusAndStateAnalyser.loadIndiaCensusData("./src/test/resources/IndiaStateCensusData.csv");
+        System.out.println(censusAndStateAnalyser.loadIndiaStateData("./src/test/resources/IndiaStateCode.csv"));
+        System.out.println(censusAndStateAnalyser.censusMap);
     }
 }
