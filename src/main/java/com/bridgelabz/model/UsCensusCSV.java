@@ -1,7 +1,7 @@
 package com.bridgelabz.model;
 import com.opencsv.bean.CsvBindByName;
 
-public class usCensusCSV {
+public class UsCensusCSV {
 
     @CsvBindByName(column = "State Id", required = true)
     public String stateId;
