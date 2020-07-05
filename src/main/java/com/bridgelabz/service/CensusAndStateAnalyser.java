@@ -8,18 +8,35 @@ import java.util.stream.StreamSupport;
 import java.lang.reflect.Field;
 
 public class CensusAndStateAnalyser {
+    /**
+     * Used for passing particular country using enum.
+     */
     public enum Country {INDIA, US}
+
+    /**
+     * Used for loading Census data to map and returning size of the map
+     */
     Map<String, CensusDAO> censusMap = null;
     public int loadCensusData(Country country, String... csvFilePath) throws CensusAnalyserException {
         censusMap = new CensusLoader().loadCensusData(country, csvFilePath);
         return censusMap.size();
     }
+    /**
+     * Used for getting count of the entries present in csv.
+     * @param iterator
+     * @param <E>
+     * @return
+     */
     private <E> int getCount(Iterator<E> iterator) {
         Iterable<E> csvIterable = () -> iterator;
         int namOfEntries = (int) StreamSupport.stream(csvIterable.spliterator(), false)
                 .count();
         return namOfEntries;
     }
+    /**
+     * These functions used for sorting data according to given fields.
+     * @param <T>
+     */
     class Sort<T extends Comparable<T>>{
         public int generalCompare(CensusDAO a,CensusDAO b,int fieldIndex,String order) throws IllegalAccessException {
             Field[] fields = CensusDAO.class.getFields();
@@ -53,6 +70,11 @@ public class CensusAndStateAnalyser {
         String sortedCensusJson = new Gson().toJson(sortedByGivenField);
         return sortedCensusJson;
     }
+    /**
+     * This function used for getting most popular state in India and US.
+     * @return
+     * @throws CensusAnalyserException
+     */
     public String mostPopularStateInIndiaAndUs() throws CensusAnalyserException {
         loadCensusData(Country.US,"./src/test/resources/USCensusData.csv");
         String populationOfUsSorted = sortForAll(0,"dsc");

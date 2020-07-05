@@ -18,6 +18,13 @@ import java.util.Map;
 import java.util.stream.StreamSupport;
 
 public class CensusLoader {
+    /**
+     * Used optional for passing file path and passing country to load particular data
+     * @param country
+     * @param csvFilePath
+     * @return
+     * @throws CensusAnalyserException
+     */
     public Map<String, CensusDAO> loadCensusData(CensusAndStateAnalyser.Country country, String... csvFilePath) throws CensusAnalyserException {
         if(country.equals(CensusAndStateAnalyser.Country.INDIA))
             return this.loadCensusData(IndianCensusCSV.class,csvFilePath);
@@ -25,6 +32,14 @@ public class CensusLoader {
             return this.loadCensusData(UsCensusCSV.class,csvFilePath);
         else throw new CensusAnalyserException("Incorrect Country",CensusAnalyserException.ExceptionType.INVALID_COUNTRY);
     }
+    /**
+     * Used for loading Indian Census data and Us Census data in CensusMap
+     * @param cenusCSVClass
+     * @param csvFilePath
+     * @param <E>
+     * @return
+     * @throws CensusAnalyserException
+     */
     private  <E> Map<String, CensusDAO> loadCensusData(Class<E> cenusCSVClass, String... csvFilePath) throws CensusAnalyserException {
         Map<String, CensusDAO> censusMap = new HashMap<String, CensusDAO>();
         try {
@@ -56,6 +71,14 @@ public class CensusLoader {
             throw new CensusAnalyserException(e.getMessage(), e.type.name());
         }
     }
+
+    /**
+     * Used for loading stateCode in Census Map.
+     * @param censusMap
+     * @param csvFilePath
+     * @return
+     * @throws CensusAnalyserException
+     */
     private int loadIndiaStateData(Map<String, CensusDAO> censusMap, String csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));

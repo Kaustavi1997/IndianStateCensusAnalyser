@@ -1,11 +1,11 @@
 package com.bridgelabz.exception;
 
-import java.util.List;
-
 public class CensusAnalyserException extends Exception {
-
+    /**
+     * declaring enum for Custom ExceptionType
+     */
     public enum ExceptionType {
-        CENSUS_FILE_PROBLEM,DELIMITER_HEADER_ISSUE,NO_CENSUS_DATA,NO_STATE_CODE_DATA,INVALID_COUNTRY
+        CENSUS_FILE_PROBLEM,DELIMITER_HEADER_ISSUE,INVALID_COUNTRY
     }
     public ExceptionType type;
     public CensusAnalyserException(String message, ExceptionType type) {
