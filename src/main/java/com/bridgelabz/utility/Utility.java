@@ -15,7 +15,6 @@ public class Utility {
         JsonParser jsonParser = new JsonParser();
         JsonElement jsonElement = jsonParser.parse(data);
         gson.toJson(jsonElement, writer);
-        writer.flush();
         writer.close();
     }
 }

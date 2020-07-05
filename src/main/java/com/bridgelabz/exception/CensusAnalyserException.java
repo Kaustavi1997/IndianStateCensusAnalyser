@@ -1,5 +1,7 @@
 package com.bridgelabz.exception;
 
+import java.util.List;
+
 public class CensusAnalyserException extends Exception {
 
     public enum ExceptionType {
@@ -13,6 +15,11 @@ public class CensusAnalyserException extends Exception {
     public CensusAnalyserException(String message, String name) {
         super(message);
         this.type = ExceptionType.valueOf(name);
+    }
+    public static<E> void throwDataException(List list) throws CensusAnalyserException {
+        if (list == null || list.size() == 0){
+            throw new CensusAnalyserException("No Census Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
     }
 
 }
