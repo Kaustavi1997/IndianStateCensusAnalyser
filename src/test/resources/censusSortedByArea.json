@@ -1,0 +1,292 @@
+[
+  {
+    "populationDensity": 201.0,
+    "totalArea": 342239.0,
+    "stateCode": "RJ",
+    "state": "Rajasthan",
+    "population": 68621012,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 236.0,
+    "totalArea": 308245.0,
+    "stateCode": "MP",
+    "state": "Madhya Pradesh",
+    "population": 72597565,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 365.0,
+    "totalArea": 307713.0,
+    "stateCode": "MH",
+    "state": "Maharashtra",
+    "population": 112372972,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 828.0,
+    "totalArea": 240928.0,
+    "stateCode": "UP",
+    "state": "Uttar Pradesh",
+    "population": 199812341,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 57.0,
+    "totalArea": 222236.0,
+    "stateCode": "JK",
+    "state": "Jammu and Kashmir",
+    "population": 12548926,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 308.0,
+    "totalArea": 196024.0,
+    "stateCode": "GJ",
+    "state": "Gujarat",
+    "population": 60383628,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 319.0,
+    "totalArea": 191791.0,
+    "stateCode": "KA",
+    "state": "Karnataka",
+    "population": 61130704,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 303.0,
+    "totalArea": 162968.0,
+    "stateCode": "AP",
+    "state": "Andhra Pradesh",
+    "population": 49386799,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 269.0,
+    "totalArea": 155707.0,
+    "stateCode": "OR",
+    "state": "Odisha",
+    "population": 41947358,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 189.0,
+    "totalArea": 135191.0,
+    "stateCode": "CT",
+    "state": "Chattisgarh",
+    "population": 25540196,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 555.0,
+    "totalArea": 130058.0,
+    "stateCode": "TN",
+    "state": "Tamil Nadu",
+    "population": 72138958,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 307.0,
+    "totalArea": 114840.0,
+    "stateCode": "TS",
+    "state": "Telangana",
+    "population": 35286757,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 1102.0,
+    "totalArea": 94163.0,
+    "stateCode": "BH",
+    "state": "Bihar",
+    "population": 103804637,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 1029.0,
+    "totalArea": 88752.0,
+    "stateCode": "WB",
+    "state": "West Bengal",
+    "population": 91347736,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 414.0,
+    "totalArea": 79714.0,
+    "stateCode": "JH",
+    "state": "Jharkhand",
+    "population": 32966238,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 397.0,
+    "totalArea": 78438.0,
+    "stateCode": "AS",
+    "state": "Assam",
+    "population": 31169272,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 123.0,
+    "totalArea": 55673.0,
+    "stateCode": "HP",
+    "state": "Himachal Pradesh",
+    "population": 6864602,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 189.0,
+    "totalArea": 53483.0,
+    "stateCode": "UT",
+    "state": "Uttarakhand",
+    "population": 10116752,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 550.0,
+    "totalArea": 50362.0,
+    "stateCode": "PB",
+    "state": "Punjab",
+    "population": 27704236,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 573.0,
+    "totalArea": 44212.0,
+    "stateCode": "HR",
+    "state": "Haryana",
+    "population": 25353081,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 859.0,
+    "totalArea": 38863.0,
+    "stateCode": "KL",
+    "state": "Kerala",
+    "population": 33387677,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 132.0,
+    "totalArea": 22429.0,
+    "stateCode": "ME",
+    "state": "Meghalaya",
+    "population": 2964007,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 122.0,
+    "totalArea": 22327.0,
+    "stateCode": "MN",
+    "state": "Manipur",
+    "population": 2721756,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 52.0,
+    "totalArea": 21081.0,
+    "stateCode": "MI",
+    "state": "Mizoram",
+    "population": 1091014,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 50.0,
+    "totalArea": 21000.0,
+    "stateCode": "AR",
+    "state": "Arunachal Pradesh",
+    "population": 1382611,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 119.0,
+    "totalArea": 16579.0,
+    "stateCode": "NL",
+    "state": "Nagaland",
+    "population": 1980602,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 350.0,
+    "totalArea": 10486.0,
+    "stateCode": "TR",
+    "state": "Tripura",
+    "population": 3671032,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 86.0,
+    "totalArea": 7096.0,
+    "stateCode": "SK",
+    "state": "Sikkim",
+    "population": 607688,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  },
+  {
+    "populationDensity": 394.0,
+    "totalArea": 3702.0,
+    "stateCode": "GA",
+    "state": "Goa",
+    "population": 1457723,
+    "housingDensity": 0.0,
+    "landArea": 0.0,
+    "waterArea": 0.0
+  }
+]
