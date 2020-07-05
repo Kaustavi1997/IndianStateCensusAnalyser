@@ -1,44 +1,29 @@
 package com.bridgelabz.model;
 
 public class CensusDAO {
-    public Double housingDensity;
-    public int housingUnits;
-    public Double landArea;
-    public Double populationDensity;
-    public Double totalArea;
-    public Double waterArea;
-    public String stateId;
-    public String srNo;
-    public String stateName;
-    public int TIN;
+    public double populationDensity;
+    public double totalArea;
     public String stateCode;
     public String state;
-    public  int densityPerSqKm;
     public  int population;
-    public  int areaInSqKm;
+    public double housingDensity;
+    public double landArea;
+    public double waterArea;
     public CensusDAO(IndianCensusCSV indianCensusCSV){
         state = indianCensusCSV.state;
         population = indianCensusCSV.population;
-        densityPerSqKm = indianCensusCSV.densityPerSqKm;
-        areaInSqKm = indianCensusCSV.areaInSqKm;
+        populationDensity = indianCensusCSV.densityPerSqKm;
+        totalArea = indianCensusCSV.areaInSqKm;
 
-    }
-    public CensusDAO(IndianStateCSV indianStateCSV){
-        srNo = indianStateCSV.srNo;
-        stateName = indianStateCSV.stateName;
-        TIN = indianStateCSV.TIN;
-        stateCode = indianStateCSV.stateCode;
     }
     public CensusDAO(UsCensusCSV usCensusCSV){
-        housingDensity = usCensusCSV.housingDensity;
-        housingUnits = usCensusCSV.housingUnits;
-        landArea = usCensusCSV.landArea;
+        state = usCensusCSV.state;
+        stateCode = usCensusCSV.stateId;
         population = usCensusCSV.population;
         populationDensity = usCensusCSV.populationDensity;
-        state = usCensusCSV.state;
-        stateId = usCensusCSV.stateId;
-        waterArea = usCensusCSV.waterArea;
         totalArea = usCensusCSV.totalArea;
+        housingDensity = usCensusCSV.housingDensity;
+        landArea = usCensusCSV.landArea;
+        waterArea = usCensusCSV.waterArea;
     }
-
 }

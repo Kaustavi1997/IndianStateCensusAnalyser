@@ -2,14 +2,9 @@ package com.bridgelabz.model;
 import com.opencsv.bean.CsvBindByName;
 
 public class IndianStateCSV {
-    @CsvBindByName(column = "SrNo", required = true)
-    public String srNo;
 
     @CsvBindByName(column = "State Name", required = true)
-    public String stateName;
-
-    @CsvBindByName(column = "TIN", required = true)
-    public int TIN;
+    public String state;
 
     @CsvBindByName(column = "StateCode", required = true)
     public String stateCode;
@@ -17,9 +12,7 @@ public class IndianStateCSV {
     @Override
     public String toString() {
         return "IndianStateCSV{" +
-                "SrNo='" + srNo + '\'' +
-                ", State Name='" + stateName + '\'' +
-                ", TIN='" + TIN + '\'' +
+                ", State Name='" + state + '\'' +
                 ", StateCode='" + stateCode + '\'' +
                 '}';
     }
