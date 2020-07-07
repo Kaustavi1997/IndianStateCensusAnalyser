@@ -1,4 +1,4 @@
-package com.bridgelabz.service;
+package com.bridgelabz.adapter;
 
 import com.bridgelabz.exception.CensusAnalyserException;
 import com.bridgelabz.model.CensusDAO;
@@ -9,6 +9,6 @@ import java.util.Map;
 public class USCensusAdapter extends CensusAdapter {
     @Override
     public Map<String, CensusDAO> loadCensusData(String... csvFilePath) throws CensusAnalyserException {
-        return super.loadCensusData(UsCensusCSV.class,csvFilePath[0]);
+        return super.loadCensusData(UsCensusCSV.class, csvFilePath[0]);
     }
 }

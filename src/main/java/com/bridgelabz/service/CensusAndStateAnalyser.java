@@ -1,21 +1,29 @@
 package com.bridgelabz.service;
+import com.bridgelabz.adapter.CensusAdapterFactory;
 import com.bridgelabz.exception.CensusAnalyserException;
 import com.bridgelabz.model.CensusDAO;
+import com.bridgelabz.model.IndianCensusCSV;
 import com.google.gson.Gson;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import java.lang.reflect.Field;
 
+import static java.util.stream.Collectors.toCollection;
+
 public class CensusAndStateAnalyser {
     /**
      * Used for passing particular country using enum.
      */
-    public enum Country {INDIA, US}
-
-    /**
-     * Used for loading Census data to map and returning size of the map
-     */
+    public enum Country { INDIA, US };
+    private Country country;
+    public CensusAndStateAnalyser(Map<String,CensusDAO> censusMap,Country country){
+        this.censusMap = censusMap;
+        this.country = country;
+    }
+    public CensusAndStateAnalyser(Country country){
+        this.country = country;
+    }
     Map<String, CensusDAO> censusMap = null;
     public int loadCensusData(Country country, String... csvFilePath) throws CensusAnalyserException {
         censusMap = CensusAdapterFactory.getCensusData(country,csvFilePath);
@@ -33,42 +41,37 @@ public class CensusAndStateAnalyser {
                 .count();
         return namOfEntries;
     }
-    /**
-     * These functions used for sorting data according to given fields.
-     * @param <T>
-     */
-    class Sort<T extends Comparable<T>>{
-        public int generalCompare(CensusDAO a,CensusDAO b,int fieldIndex,String order) throws IllegalAccessException {
-            Field[] fields = CensusDAO.class.getFields();
-            T first = (T) fields[fieldIndex].get(a);
-            T second = (T) fields[fieldIndex].get(b);
-            if(order == "asc"){
-                return second.compareTo(first);
-            }
-            else {
-                return first.compareTo(second);
-            }
-        }
+    public void checkNull() throws CensusAnalyserException {
+        if (censusMap == null || censusMap.size() == 0)
+            throw new CensusAnalyserException("No Census Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
     }
-    public String sortForAll(int fieldindex,String order) throws CensusAnalyserException {
-        Sort sort = new Sort();
-        List<Map.Entry<String, CensusDAO>> sorted = censusMap.entrySet()
-                .stream()
-                .sorted((e1, e2) -> {
-                    int result = 0;
-                    try {
-                        result = sort.generalCompare(e2.getValue(),e1.getValue(),fieldindex,order);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                    return result;
-                }).collect(Collectors.toList());
-        List<CensusDAO> sortedByGivenField = new ArrayList<>();
-        for (Map.Entry<String, CensusDAO> indianCensusEntry : sorted) {
-            sortedByGivenField.add(indianCensusEntry.getValue());
+    public enum Fields { STATE, POPULATION,TOTAL_AREA,POPULATION_DENSITY,STATE_CODE };
+    public String sortForAll(Fields field) throws CensusAnalyserException {
+        checkNull();
+        Comparator<CensusDAO> censusComparator = null;
+        switch(field){
+            case STATE:
+                censusComparator = Comparator.comparing(census -> census.state);
+                break;
+            case POPULATION:
+                censusComparator = Comparator.comparing(census -> census.population);
+                censusComparator = censusComparator.reversed();
+                break;
+            case STATE_CODE:
+                censusComparator = Comparator.comparing(census -> census.stateCode);
+                break;
+            case TOTAL_AREA:
+                censusComparator = Comparator.comparing(census -> census.totalArea);
+                censusComparator = censusComparator.reversed();
+                break;
+            case POPULATION_DENSITY:
+                censusComparator = Comparator.comparing(census -> census.populationDensity);
+                censusComparator = censusComparator.reversed();
+                break;
         }
-        String sortedCensusJson = new Gson().toJson(sortedByGivenField);
-        return sortedCensusJson;
+        ArrayList censusDTOS = (ArrayList) censusMap.values().stream().sorted(censusComparator).map(censusDAO -> censusDAO.getCensusDTO(country)).collect(Collectors.toList());
+        String sortedStateIndiaCensus = new Gson().toJson(censusDTOS);
+        return sortedStateIndiaCensus;
     }
     /**
      * This function used for getting most popular state in India and US.
@@ -77,12 +80,12 @@ public class CensusAndStateAnalyser {
      */
     public String mostPopularStateInIndiaAndUs() throws CensusAnalyserException {
         loadCensusData(Country.US,"./src/test/resources/USCensusData.csv");
-        String populationOfUsSorted = sortForAll(0,"dsc");
+        String populationOfUsSorted = sortForAll(Fields.POPULATION_DENSITY);
         CensusDAO[] SortedBYDensityUs = new Gson().fromJson(populationOfUsSorted, CensusDAO[].class);
         String usMostDensityState = SortedBYDensityUs[0].state;
         Double usMostDensity = (double) SortedBYDensityUs[0].populationDensity;
         loadCensusData(Country.INDIA,"./src/test/resources/IndiaStateCensusData.csv","./src/test/resources/IndiaStateCode.csv");
-        String populationOfIndiaSorted = sortForAll(0,"dsc");
+        String populationOfIndiaSorted = sortForAll(Fields.POPULATION_DENSITY);
         CensusDAO[] SortedBYDensityIndia = new Gson().fromJson(populationOfUsSorted, CensusDAO[].class);
         String indiaMostDensityState = SortedBYDensityUs[0].state;
         Double indiaMostDensity = (double) SortedBYDensityUs[0].populationDensity;
@@ -91,5 +94,4 @@ public class CensusAndStateAnalyser {
         else
             return indiaMostDensityState;
     }
-
-}
+ }

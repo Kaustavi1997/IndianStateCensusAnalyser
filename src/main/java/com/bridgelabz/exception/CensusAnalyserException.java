@@ -5,7 +5,7 @@ public class CensusAnalyserException extends Exception {
      * declaring enum for Custom ExceptionType
      */
     public enum ExceptionType {
-        CENSUS_FILE_PROBLEM,DELIMITER_HEADER_ISSUE,INVALID_COUNTRY
+        CENSUS_FILE_PROBLEM,DELIMITER_HEADER_ISSUE,INVALID_COUNTRY,NO_CENSUS_DATA
     }
     public ExceptionType type;
     public CensusAnalyserException(String message, ExceptionType type) {
