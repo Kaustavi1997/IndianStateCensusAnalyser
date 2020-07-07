@@ -1,0 +1,410 @@
+[
+  {
+    "state": "California",
+    "stateId": "CA",
+    "population": 37253956,
+    "populationDensity": 92.32,
+    "totalArea": 423967.74,
+    "housingUnits": 0
+  },
+  {
+    "state": "Texas",
+    "stateId": "TX",
+    "population": 25145561,
+    "populationDensity": 37.18,
+    "totalArea": 695662.15,
+    "housingUnits": 0
+  },
+  {
+    "state": "New York",
+    "stateId": "NY",
+    "population": 19378102,
+    "populationDensity": 158.77,
+    "totalArea": 141296.85,
+    "housingUnits": 0
+  },
+  {
+    "state": "Florida",
+    "stateId": "FL",
+    "population": 18801310,
+    "populationDensity": 135.37,
+    "totalArea": 170311.79,
+    "housingUnits": 0
+  },
+  {
+    "state": "Illinois",
+    "stateId": "IL",
+    "population": 12830632,
+    "populationDensity": 89.23,
+    "totalArea": 149995.52,
+    "housingUnits": 0
+  },
+  {
+    "state": "Pennsylvania",
+    "stateId": "PA",
+    "population": 12702379,
+    "populationDensity": 109.61,
+    "totalArea": 119280.28,
+    "housingUnits": 0
+  },
+  {
+    "state": "Ohio",
+    "stateId": "OH",
+    "population": 11536504,
+    "populationDensity": 109.0,
+    "totalArea": 116097.8,
+    "housingUnits": 0
+  },
+  {
+    "state": "Michigan",
+    "stateId": "MI",
+    "population": 9883640,
+    "populationDensity": 67.49,
+    "totalArea": 250487.02,
+    "housingUnits": 0
+  },
+  {
+    "state": "Georgia",
+    "stateId": "GA",
+    "population": 9687653,
+    "populationDensity": 65.02,
+    "totalArea": 153910.54,
+    "housingUnits": 0
+  },
+  {
+    "state": "North Carolina",
+    "stateId": "NC",
+    "population": 9535483,
+    "populationDensity": 75.71,
+    "totalArea": 139391.09,
+    "housingUnits": 0
+  },
+  {
+    "state": "New Jersey",
+    "stateId": "NJ",
+    "population": 8791894,
+    "populationDensity": 461.58,
+    "totalArea": 22591.39,
+    "housingUnits": 0
+  },
+  {
+    "state": "Virginia",
+    "stateId": "VA",
+    "population": 8001024,
+    "populationDensity": 78.22,
+    "totalArea": 110786.64,
+    "housingUnits": 0
+  },
+  {
+    "state": "Washington",
+    "stateId": "WA",
+    "population": 6724540,
+    "populationDensity": 39.07,
+    "totalArea": 184660.98,
+    "housingUnits": 0
+  },
+  {
+    "state": "Massachusetts",
+    "stateId": "MA",
+    "population": 6547629,
+    "populationDensity": 324.09,
+    "totalArea": 27335.76,
+    "housingUnits": 0
+  },
+  {
+    "state": "Indiana",
+    "stateId": "IN",
+    "population": 6483802,
+    "populationDensity": 69.88,
+    "totalArea": 94326.27,
+    "housingUnits": 0
+  },
+  {
+    "state": "Arizona",
+    "stateId": "AZ",
+    "population": 6392017,
+    "populationDensity": 21.74,
+    "totalArea": 295233.74,
+    "housingUnits": 0
+  },
+  {
+    "state": "Tennessee",
+    "stateId": "TN",
+    "population": 6346105,
+    "populationDensity": 59.42,
+    "totalArea": 109153.19,
+    "housingUnits": 0
+  },
+  {
+    "state": "Missouri",
+    "stateId": "MO",
+    "population": 5988927,
+    "populationDensity": 33.63,
+    "totalArea": 180540.41,
+    "housingUnits": 0
+  },
+  {
+    "state": "Maryland",
+    "stateId": "MD",
+    "population": 5773552,
+    "populationDensity": 229.65,
+    "totalArea": 32131.23,
+    "housingUnits": 0
+  },
+  {
+    "state": "Wisconsin",
+    "stateId": "WI",
+    "population": 5686986,
+    "populationDensity": 40.54,
+    "totalArea": 169634.97,
+    "housingUnits": 0
+  },
+  {
+    "state": "Minnesota",
+    "stateId": "MN",
+    "population": 5303925,
+    "populationDensity": 25.71,
+    "totalArea": 225162.93,
+    "housingUnits": 0
+  },
+  {
+    "state": "Colorado",
+    "stateId": "CO",
+    "population": 5029196,
+    "populationDensity": 18.73,
+    "totalArea": 269601.56,
+    "housingUnits": 0
+  },
+  {
+    "state": "Alabama",
+    "stateId": "AL",
+    "population": 4779736,
+    "populationDensity": 36.45,
+    "totalArea": 135767.46,
+    "housingUnits": 0
+  },
+  {
+    "state": "South Carolina",
+    "stateId": "SC",
+    "population": 4625364,
+    "populationDensity": 59.42,
+    "totalArea": 82932.75,
+    "housingUnits": 0
+  },
+  {
+    "state": "Louisiana",
+    "stateId": "LA",
+    "population": 4533372,
+    "populationDensity": 40.5,
+    "totalArea": 135658.83,
+    "housingUnits": 0
+  },
+  {
+    "state": "Kentucky",
+    "stateId": "KY",
+    "population": 4339367,
+    "populationDensity": 42.43,
+    "totalArea": 104655.8,
+    "housingUnits": 0
+  },
+  {
+    "state": "Oregon",
+    "stateId": "OR",
+    "population": 3831074,
+    "populationDensity": 15.41,
+    "totalArea": 254799.43,
+    "housingUnits": 0
+  },
+  {
+    "state": "Oklahoma",
+    "stateId": "OK",
+    "population": 3751351,
+    "populationDensity": 21.12,
+    "totalArea": 181037.37,
+    "housingUnits": 0
+  },
+  {
+    "state": "Connecticut",
+    "stateId": "CT",
+    "population": 3574097,
+    "populationDensity": 284.98,
+    "totalArea": 14357.38,
+    "housingUnits": 0
+  },
+  {
+    "state": "Iowa",
+    "stateId": "IA",
+    "population": 3046355,
+    "populationDensity": 21.04,
+    "totalArea": 145746.02,
+    "housingUnits": 0
+  },
+  {
+    "state": "Mississippi",
+    "stateId": "MS",
+    "population": 2967297,
+    "populationDensity": 24.4,
+    "totalArea": 125437.83,
+    "housingUnits": 0
+  },
+  {
+    "state": "Arkansas",
+    "stateId": "AR",
+    "population": 2915918,
+    "populationDensity": 21.62,
+    "totalArea": 137731.91,
+    "housingUnits": 0
+  },
+  {
+    "state": "Kansas",
+    "stateId": "KS",
+    "population": 2853118,
+    "populationDensity": 13.47,
+    "totalArea": 213100.13,
+    "housingUnits": 0
+  },
+  {
+    "state": "Utah",
+    "stateId": "UT",
+    "population": 2763885,
+    "populationDensity": 12.97,
+    "totalArea": 219882.07,
+    "housingUnits": 0
+  },
+  {
+    "state": "Nevada",
+    "stateId": "NV",
+    "population": 2700551,
+    "populationDensity": 9.5,
+    "totalArea": 286379.91,
+    "housingUnits": 0
+  },
+  {
+    "state": "New Mexico",
+    "stateId": "NM",
+    "population": 2059179,
+    "populationDensity": 6.56,
+    "totalArea": 314917.66,
+    "housingUnits": 0
+  },
+  {
+    "state": "West Virginia",
+    "stateId": "WV",
+    "population": 1852994,
+    "populationDensity": 29.77,
+    "totalArea": 62755.56,
+    "housingUnits": 0
+  },
+  {
+    "state": "Nebraska",
+    "stateId": "NE",
+    "population": 1826341,
+    "populationDensity": 9.19,
+    "totalArea": 200330.05,
+    "housingUnits": 0
+  },
+  {
+    "state": "Idaho",
+    "stateId": "ID",
+    "population": 1567582,
+    "populationDensity": 7.34,
+    "totalArea": 216442.74,
+    "housingUnits": 0
+  },
+  {
+    "state": "Hawaii",
+    "stateId": "HI",
+    "population": 1360301,
+    "populationDensity": 81.78,
+    "totalArea": 28313.05,
+    "housingUnits": 0
+  },
+  {
+    "state": "Maine",
+    "stateId": "ME",
+    "population": 1328361,
+    "populationDensity": 16.64,
+    "totalArea": 91633.17,
+    "housingUnits": 0
+  },
+  {
+    "state": "New Hampshire",
+    "stateId": "NH",
+    "population": 1316470,
+    "populationDensity": 56.76,
+    "totalArea": 24214.23,
+    "housingUnits": 0
+  },
+  {
+    "state": "Rhode Island",
+    "stateId": "RI",
+    "population": 1052567,
+    "populationDensity": 393.09,
+    "totalArea": 4001.25,
+    "housingUnits": 0
+  },
+  {
+    "state": "Montana",
+    "stateId": "MT",
+    "population": 989415,
+    "populationDensity": 2.63,
+    "totalArea": 380831.38,
+    "housingUnits": 0
+  },
+  {
+    "state": "Delaware",
+    "stateId": "DE",
+    "population": 897934,
+    "populationDensity": 177.92,
+    "totalArea": 6445.76,
+    "housingUnits": 0
+  },
+  {
+    "state": "South Dakota",
+    "stateId": "SD",
+    "population": 814180,
+    "populationDensity": 4.13,
+    "totalArea": 199728.84,
+    "housingUnits": 0
+  },
+  {
+    "state": "Alaska",
+    "stateId": "AK",
+    "population": 710231,
+    "populationDensity": 0.46,
+    "totalArea": 1723338.01,
+    "housingUnits": 0
+  },
+  {
+    "state": "North Dakota",
+    "stateId": "ND",
+    "population": 672591,
+    "populationDensity": 3.75,
+    "totalArea": 183107.94,
+    "housingUnits": 0
+  },
+  {
+    "state": "Vermont",
+    "stateId": "VT",
+    "population": 625741,
+    "populationDensity": 26.22,
+    "totalArea": 24906.28,
+    "housingUnits": 0
+  },
+  {
+    "state": "District of Columbia",
+    "stateId": "DC",
+    "population": 601723,
+    "populationDensity": 3805.61,
+    "totalArea": 177.0,
+    "housingUnits": 0
+  },
+  {
+    "state": "Wyoming",
+    "stateId": "WY",
+    "population": 563626,
+    "populationDensity": 2.24,
+    "totalArea": 253334.72,
+    "housingUnits": 0
+  }
+]
